@@ -170,8 +170,9 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+  return list.filter((a,b)=>list.indexOf(a)===b);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -192,13 +193,6 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-let runnerslisttest = [
-  { id: 1, first_name: "Charmain", last_name: "Seiler", email: "cseiler0@wired.com", shirt_size: "2XL", company_name: "Divanoodle", donation: 75 },
-  { id: 2, first_name: "Whitaker", last_name: "Ierland", email: "wierland1@angelfire.com", shirt_size: "2XL", company_name: "Wordtune", donation: 148 },
-  { id: 3, first_name: "Julieta", last_name: "McCloid", email: "jmccloid2@yahoo.com", shirt_size: "S", company_name: "Riffpedia", donation: 171 },
-  { id: 4, first_name: "Martynne", last_name: "Paye", email: "mpaye3@sciencedaily.com", shirt_size: "XL", company_name: "Wordware", donation: 288 },
-  { id: 5, first_name: "Gussy", last_name: "Raraty", email: "graraty4@ucoz.ru", shirt_size: "L", company_name: "Oozz", donation: 291 },
-]
 function getFullNames(runners) {
   /* CODE HERE */
   let runnerNames = [];
@@ -254,18 +248,18 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  /* CODE HERE */
-  /*for (let i=0;i<runners.length;i++){
-    if(tShirtSize==runners.shirt_size){
-
-    }
-  }*/
   const shirtFilter = runners.filter(function(element){
     return element.shirt_size == tShirtSize;
   })
   return shirtFilter;
 }
 
+let listtest = [
+  { id: 1, first_name: "Charmain", last_name: "Seiler", email: "cseiler0@wired.com", shirt_size: "2XL", company_name: "Divanoodle", donation: 75 },
+  { id: 2, first_name: "Whitaker", last_name: "Ierland", email: "wierland1@angelfire.com", shirt_size: "2XL", company_name: "Wordtune", donation: 148 },
+  { id: 3, first_name: "Julieta", last_name: "McCloid", email: "jmccloid2@yahoo.com", shirt_size: "S", company_name: "Riffpedia", donation: 171 },
+  { id: 4, first_name: "Martynne", last_name: "Paye", email: "mpaye3@sciencedaily.com", shirt_size: "XL", company_name: "Wordware", donation: 288 },
+  { id: 5, first_name: "Gussy", last_name: "Raraty", email: "graraty4@ucoz.ru", shirt_size: "L", company_name: "Oozz", donation: 291 }]
 /**
  * ### Challenge `tallyUpDonations`
  * 
@@ -278,12 +272,19 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
 */
 function tallyUpDonations(runners) {
   /* CODE HERE */
-  let sum = 0;
+  /*let sum = 0;
   for (let i = 0; i < runners.length; i++) {
     sum = sum + runners[i].donation;
   }
-  return sum;
+  return sum;*/
+  
+  const sumDo = runners.reduce(function(sum,element){
+    return sum + element.donation;
+  },0);
+  return sumDo;
 }
+//console.log(tallyUpDonations(listtest));
+
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
